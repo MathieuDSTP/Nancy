@@ -77,6 +77,11 @@
         /// </summary>
         public abstract void Execute();
 
+        public ILocationlisation Localisation { 
+            get;
+            set;
+        }
+
         /// <summary>
         /// Initializes the specified engine.
         /// </summary>
@@ -272,6 +277,8 @@
             return str != null ? str.ToHtmlString() : HttpUtility.HtmlEncode(Convert.ToString(value, CultureInfo.CurrentCulture));
         }
     }
+
+    
 
     /// <summary>
     /// A strongly-typed view base.

@@ -19,11 +19,13 @@ namespace Nancy.ViewEngines.Razor.Tests
         private readonly IRazorConfiguration configuration;
         private readonly FileSystemViewLocationProvider fileSystemViewLocationProvider;
         private readonly IRootPathProvider rootPathProvider;
+        private readonly ILocationlisation locationlisation;
 
         public RazorViewEngineFixture()
         {
             this.configuration = A.Fake<IRazorConfiguration>();
-            this.engine = new RazorViewEngine(this.configuration);
+            this.locationlisation = A.Fake<ILocationlisation>();
+            this.engine = new RazorViewEngine(this.configuration, this.locationlisation);
 
             var cache = A.Fake<IViewCache>();
             A.CallTo(() => cache.GetOrAdd(A<ViewLocationResult>.Ignored, A<Func<ViewLocationResult, Func<NancyRazorViewBase>>>.Ignored))

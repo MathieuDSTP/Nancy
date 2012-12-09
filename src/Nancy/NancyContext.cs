@@ -8,6 +8,8 @@ namespace Nancy
     using Nancy.Responses.Negotiation;
     using Nancy.Security;
     using Nancy.Validation;
+    using System.Globalization;
+    using System.Threading;
 
     /// <summary>
     /// Nancy context.
@@ -26,7 +28,7 @@ namespace Nancy
             this.Items = new Dictionary<string, object>();
             this.Trace = new RequestTrace();
             this.ViewBag = new DynamicDictionary();
-            
+
             // TODO - potentially additional logic to lock to ip etc?
             this.ControlPanelEnabled = true;
         }
@@ -94,6 +96,11 @@ namespace Nancy
         }
 
         /// <summary>
+        /// Gets or sets the current culture
+        /// </summary>
+        public CultureInfo Culture { get; set; }
+
+        /// <summary>
         /// Context of content negotiation (if relevent)
         /// </summary>
         public NegotiationContext NegotiationContext { get; set; }
@@ -112,7 +119,7 @@ namespace Nancy
 
             if (this.request != null)
             {
-                ((IDisposable) this.request).Dispose();
+                ((IDisposable)this.request).Dispose();
             }
 
             if (this.Response != null)
