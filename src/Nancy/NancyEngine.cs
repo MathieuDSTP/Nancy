@@ -107,8 +107,6 @@
 
             this.SaveTraceInformation(context);
 
-            
-
             return context;
         }
 
