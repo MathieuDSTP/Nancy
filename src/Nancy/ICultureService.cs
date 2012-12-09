@@ -8,6 +8,7 @@ namespace Nancy
 {
     public interface ICultureService
     {
-        CultureInfo GetCurrentCulture();
+        CultureInfo DetermineCurrentCulture(NancyContext context);
+        CultureInfo CurrentCulture { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Nancy.ViewEngines.Razor
 
         public string Localise(string key)
         {
-            var cultureInfo = this.cultureService.GetCurrentCulture();
+            var cultureInfo = this.cultureService.CurrentCulture;
 
             return "Hello Ella";
         }

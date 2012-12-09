@@ -144,11 +144,6 @@
     <Compile Include="DependencyModule.cs" />
     <Compile Include="IApplicationDependency.cs" />
     <Compile Include="IRequestDependency.cs" />
-    <Compile Include="Resources\Localisation.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Localisation.resx</DependentUpon>
-    </Compile>
     <Compile Include="MainModule.cs" />
     <Compile Include="Models\Payload.cs" />
     <Compile Include="Models\RatPack.cs" />
@@ -157,11 +152,6 @@
     <Compile Include="Piratizer4000.cs" />
     <Compile Include="PngSerializer.cs" />
     <Compile Include="RequestDependencyClass.cs" />
-    <Compile Include="Resources\Localisation.en-GB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Localisation.en-GB.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\razor.cshtml" />
@@ -206,16 +196,6 @@
     <None Include="Views\routes.cshtml" />
     <None Include="Views\spark.spark" />
     <None Include="Views\ssve.sshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Localisation.en-GB.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localisation.en-GB.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Localisation.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localisation.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

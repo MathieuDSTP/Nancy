@@ -114,7 +114,7 @@
 
         private void SetCulture(NancyContext context)
         {
-            context.Culture = this.cultureService.GetCurrentCulture();
+            context.Culture = this.cultureService.DetermineCurrentCulture(context);
         }
 
         private void SaveTraceInformation(NancyContext ctx)
