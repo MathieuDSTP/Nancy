@@ -15,7 +15,12 @@ namespace Nancy.ViewEngines.Razor
         {
             var cultureInfo = this.cultureService.CurrentCulture;
 
-            return "Hello Ella";
+            if (cultureInfo.Name == "en-GB")
+                return "Good day friend";
+            else if (cultureInfo.Name == "de-DE")
+                return "Guten Tag freund";
+            else
+                return "Howdy stranger";
         }
     }
 }

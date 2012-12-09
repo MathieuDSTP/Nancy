@@ -36,8 +36,10 @@ namespace Nancy
             //}
 
             //return new CultureInfo(ApplicationSettings.DefaultCulture);
+
             CurrentCulture = Thread.CurrentThread.CurrentCulture;
-            return Thread.CurrentThread.CurrentCulture;
+            CurrentCulture = new CultureInfo("de-DE");
+            return CurrentCulture;
         }
     }
 }
