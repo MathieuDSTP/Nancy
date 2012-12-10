@@ -12,7 +12,7 @@ namespace Nancy.Demo.Hosting.Aspnet
     {
         public MainModule(IRouteCacheProvider routeCacheProvider)
         {
-            Get["/"] = x =>
+            Get["/{culture}"] = x =>
                            {
                                var fd = this.Context.Culture;
                 return View["routes", routeCacheProvider.GetCache()];
