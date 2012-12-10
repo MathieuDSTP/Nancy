@@ -1,4 +1,4 @@
-﻿namespace Nancy.Culture
+namespace Nancy.Culture
 {
     using System.Globalization;
 

@@ -102,6 +102,8 @@
             
             this.SetCulture(context);
 
+            this.SetCulture(context);
+
             this.InvokeRequestLifeCycle(context, pipelines);
 
             this.CheckStatusCodeHandler(context);
