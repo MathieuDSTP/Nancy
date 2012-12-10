@@ -14,6 +14,7 @@ namespace Nancy.Bootstrapper
     using Responses.Negotiation;
     using Security;
     using Nancy.Validation;
+    using Nancy.Culture;
 
     /// <summary>
     /// Configuration class for Nancy's internals.
@@ -88,8 +89,7 @@ namespace Nancy.Bootstrapper
                         Diagnostics = typeof(DefaultDiagnostics),
                         RouteSegmentExtractor = typeof(DefaultRouteSegmentExtractor),
                         RouteDescriptionProvider = typeof(DefaultRouteDescriptionProvider),
-                        CultureService = typeof(DefaultCultureService),
-                    };
+			CultureService = typeof(DefaultCultureService),                    };
             }
         }
 

@@ -8,8 +8,6 @@ namespace Nancy
     using Nancy.Responses.Negotiation;
     using Nancy.Security;
     using Nancy.Validation;
-    using System.Globalization;
-    using System.Threading;
 
     /// <summary>
     /// Nancy context.
@@ -96,7 +94,7 @@ namespace Nancy
         }
 
         /// <summary>
-        /// Gets or sets the current culture
+        /// Gets or sets the context's culture
         /// </summary>
         public CultureInfo Culture { get; set; }
 

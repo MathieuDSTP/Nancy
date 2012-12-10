@@ -1,3 +1,5 @@
+
+
 namespace Nancy.Tests.Unit
 {
     using System;
@@ -9,6 +11,7 @@ namespace Nancy.Tests.Unit
     using Nancy.Routing;
     using Nancy.Tests.Fakes;
     using Xunit;
+    using Nancy.Culture;
     using ResolveResult = System.Tuple<Nancy.Routing.Route, DynamicDictionary, System.Func<NancyContext, Response>, System.Action<NancyContext>, System.Func<NancyContext, System.Exception, Response>>;
 
     public class NancyEngineFixture
@@ -23,7 +26,8 @@ namespace Nancy.Tests.Unit
         private readonly IRouteInvoker routeInvoker;
         private readonly IRequestDispatcher requestDispatcher;
         private readonly DiagnosticsConfiguration diagnosticsConfiguration;
-        private ICultureService cultureService;
+        private readonly ICultureService cultureService;
+
 
         public NancyEngineFixture()
         {

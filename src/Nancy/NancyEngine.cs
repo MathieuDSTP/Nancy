@@ -10,6 +10,7 @@
     using Nancy.Diagnostics;
     using Nancy.ErrorHandling;
     using Nancy.Routing;
+    using Nancy.Culture;
 
     /// <summary>
     /// Default engine for handling Nancy <see cref="Request"/>s.
@@ -99,6 +100,8 @@
             var pipelines =
                 this.RequestPipelinesFactory.Invoke(context);
             
+            this.SetCulture(context);
+
             this.SetCulture(context);
 
             this.InvokeRequestLifeCycle(context, pipelines);
@@ -223,12 +226,12 @@
             {
                 InvokePreRequestHook(context, pipelines.BeforeRequest);
 
-                if (context.Response == null) 
+                if (context.Response == null)
                 {
                     this.dispatcher.Dispatch(context);
                 }
 
-                if (pipelines.AfterRequest != null) 
+                if (pipelines.AfterRequest != null)
                 {
                     pipelines.AfterRequest.Invoke(context);
                 }
@@ -257,7 +260,7 @@
             try
             {
                 if (pipeline == null)
-                { 
+                {
                     throw new RequestExecutionException(ex);
                 }
 
