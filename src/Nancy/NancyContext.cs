@@ -8,6 +8,7 @@ namespace Nancy
     using Nancy.Responses.Negotiation;
     using Nancy.Security;
     using Nancy.Validation;
+    using System.Globalization;
 
     /// <summary>
     /// Nancy context.
