@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Resources;
-
-namespace Nancy.ViewEngines.Razor
+﻿namespace Nancy.ViewEngines.Razor
 {
     using System;
     using System.CodeDom;
@@ -12,6 +9,9 @@ namespace Nancy.ViewEngines.Razor
     using System.Reflection;
     using System.Web.Razor;
     using System.Web.Razor.Parser.SyntaxTree;
+    using System.Collections;
+    using System.Resources;
+    using Nancy.Culture;
 
     using Nancy.Bootstrapper;
     using Nancy.Responses;
@@ -23,6 +23,7 @@ namespace Nancy.ViewEngines.Razor
     {
         private readonly IRazorConfiguration razorConfiguration;
         private readonly ILocationlisation locationlisation;
+        private readonly ICultureService cultureService;
         private readonly IEnumerable<IRazorViewRenderer> viewRenderers;
         private readonly object compileLock = new object();
 
@@ -40,7 +41,7 @@ namespace Nancy.ViewEngines.Razor
         /// Initializes a new instance of the <see cref="RazorViewEngine"/> class.
         /// </summary>
         /// <param name="configuration">The <see cref="IRazorConfiguration"/> that should be used by the engine.</param>
-        public RazorViewEngine(IRazorConfiguration configuration, ILocationlisation locationlisation)
+        public RazorViewEngine(IRazorConfiguration configuration, ILocationlisation locationlisation, ICultureService cultureService)
         {
             this.viewRenderers = new List<IRazorViewRenderer>
             {
@@ -50,6 +51,7 @@ namespace Nancy.ViewEngines.Razor
 
             this.razorConfiguration = configuration;
             this.locationlisation = locationlisation;
+            this.cultureService = cultureService;
         }
 
         /// <summary>
@@ -348,7 +350,8 @@ namespace Nancy.ViewEngines.Razor
             var view = viewFactory.Invoke();
 
             view.Localisation = this.locationlisation;
-
+            view.CultureService = this.cultureService;
+            
             view.Code = string.Empty;
 
             return view;

@@ -1,23 +1,19 @@
-using System;
+using System.Globalization;
 
 namespace Nancy.ViewEngines.Razor
 {
+    using System;
+    using Nancy.Culture;
+
     public class DefaultLocationlisation : ILocationlisation
     {
-        private readonly ICultureService cultureService;
-
-        public DefaultLocationlisation(ICultureService cultureService)
-        {
-            this.cultureService = cultureService;
-        }
+        public CultureInfo CurrentCulture { get; set; }
 
         public string Localise(string key)
         {
-            var cultureInfo = this.cultureService.CurrentCulture;
-
-            if (cultureInfo.Name == "en-GB")
+            if (CurrentCulture.Name == "en-GB")
                 return "Good day friend";
-            else if (cultureInfo.Name == "de-DE")
+            else if (CurrentCulture.Name == "de-DE")
                 return "Guten Tag freund";
             else
                 return "Howdy stranger";

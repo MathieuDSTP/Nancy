@@ -14,14 +14,14 @@ namespace Nancy.Demo.Hosting.Aspnet
         {
             Get["/{culture}"] = x =>
                            {
-                               var fd = this.Context.Culture;
-                return View["routes", routeCacheProvider.GetCache()];
-            };
+                               return View["routes", routeCacheProvider.GetCache()];
+                           };
 
-            Get["/negotiated"] = parameters => {
+            Get["/negotiated"] = parameters =>
+            {
                 return Negotiate
-                    .WithModel(new RatPack {FirstName = "Nancy "})
-                    .WithMediaRangeModel("text/html", new RatPack {FirstName = "Nancy fancy pants"})
+                    .WithModel(new RatPack { FirstName = "Nancy " })
+                    .WithMediaRangeModel("text/html", new RatPack { FirstName = "Nancy fancy pants" })
                     .WithView("negotiatedview")
                     .WithHeader("X-Custom", "SomeValue");
             };
@@ -31,39 +31,48 @@ namespace Nancy.Demo.Hosting.Aspnet
                 return (string)parameters.name;
             };
 
-            Get["/filtered", r => true] = x => {
+            Get["/filtered", r => true] = x =>
+            {
                 return "This is a route with a filter that always returns true.";
             };
 
-            Get["/filtered", r => false] = x => {
+            Get["/filtered", r => false] = x =>
+            {
                 return "This is also a route, but filtered out so should never be hit.";
             };
 
-            Get[@"/(?<foo>\d{2,4})/{bar}"] = x => {
+            Get[@"/(?<foo>\d{2,4})/{bar}"] = x =>
+            {
                 return string.Format("foo: {0}<br/>bar: {1}", x.foo, x.bar);
             };
 
-            Get["/test"] = x => {
+            Get["/test"] = x =>
+            {
                 return "Test";
             };
 
-            Get["/nustache"] = parameters => {
+            Get["/nustache"] = parameters =>
+            {
                 return View["nustache", new { name = "Nancy", value = 1000000 }];
             };
 
-            Get["/dotliquid"] = parameters => {
+            Get["/dotliquid"] = parameters =>
+            {
                 return View["dot", new { name = "dot" }];
             };
 
-            Get["/javascript"] = x => {
+            Get["/javascript"] = x =>
+            {
                 return View["javascript.html"];
             };
 
-            Get["/static"] = x => {
+            Get["/static"] = x =>
+            {
                 return View["static"];
             };
 
-            Get["/razor"] = x => {
+            Get["/razor"] = x =>
+            {
                 var model = new RatPack { FirstName = "Frank" };
                 return View["razor.cshtml", model];
             };
@@ -101,11 +110,13 @@ namespace Nancy.Demo.Hosting.Aspnet
                 return View["ssve.sshtml", model];
             };
 
-            Get["/viewmodelconvention"] = x => {
+            Get["/viewmodelconvention"] = x =>
+            {
                 return View[new SomeViewModel()];
             };
 
-            Get["/spark"] = x => {
+            Get["/spark"] = x =>
+            {
                 var model = new RatPack { FirstName = "Bright" };
                 return View["spark.spark", model];
             };
@@ -116,17 +127,20 @@ namespace Nancy.Demo.Hosting.Aspnet
                 return View["anon.spark", model];
             };
 
-            Get["/json"] = x => {
+            Get["/json"] = x =>
+            {
                 var model = new RatPack { FirstName = "Andy" };
                 return Response.AsJson(model);
             };
 
-            Get["/xml"] = x => {
+            Get["/xml"] = x =>
+            {
                 var model = new RatPack { FirstName = "Andy" };
                 return Response.AsXml(model);
             };
 
-            Get["/session"] = x => {
+            Get["/session"] = x =>
+            {
                 var value = Session["moo"] ?? "";
 
                 var output = "Current session value is: " + value;
@@ -139,7 +153,8 @@ namespace Nancy.Demo.Hosting.Aspnet
                 return output;
             };
 
-            Get["/sessionObject"] = x => {
+            Get["/sessionObject"] = x =>
+            {
                 var value = Session["baa"] ?? "null";
 
                 var output = "Current session value is: " + value;

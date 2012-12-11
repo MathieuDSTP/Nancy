@@ -128,7 +128,6 @@
     <Compile Include="Conventions\NancyConventions.cs" />
     <Compile Include="Conventions\StaticContentConventionBuilder.cs" />
     <Compile Include="Conventions\StaticContentsConventions.cs" />
-    <Compile Include="DefaultCultureService.cs" />
     <Compile Include="Culture\DefaultCultureService.cs" />
     <Compile Include="Culture\ICultureService.cs" />
     <Compile Include="DefaultResponseFormatterFactory.cs" />
@@ -147,7 +146,6 @@
     <Compile Include="Diagnostics\DiagnosticsModuleCatalog.cs" />
     <Compile Include="Diagnostics\DefaultDiagnostics.cs" />
     <Compile Include="Diagnostics\DiagnosticsViewRenderer.cs" />
-    <Compile Include="ICultureService.cs" />
     <Compile Include="ModelBinding\BindingConfig.cs" />
     <Compile Include="ModelBinding\PropertyBindingException.cs" />
     <Compile Include="NegotiatorExtensions.cs" />

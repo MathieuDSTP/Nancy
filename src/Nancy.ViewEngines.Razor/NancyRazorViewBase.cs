@@ -6,6 +6,7 @@
     using System.IO;
     using System.Text;
     using Nancy.Helpers;
+    using Nancy.Culture;
 
     /// <summary>
     /// Base class for nancy razor views.
@@ -77,10 +78,9 @@
         /// </summary>
         public abstract void Execute();
 
-        public ILocationlisation Localisation { 
-            get;
-            set;
-        }
+        public ILocationlisation Localisation { get; set; }
+
+        public ICultureService CultureService { get; set; }
 
         /// <summary>
         /// Initializes the specified engine.
@@ -89,7 +89,9 @@
         /// <param name="renderContext">The render context.</param>
         /// <param name="model">The model.</param>
         public virtual void Initialize(RazorViewEngine engine, IRenderContext renderContext, object model)
-        { }
+        {
+            Localisation.CurrentCulture = CultureService.DetermineCurrentCulture(renderContext.Context);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NancyRazorViewBase"/> class.
@@ -278,7 +280,7 @@
         }
     }
 
-    
+
 
     /// <summary>
     /// A strongly-typed view base.
@@ -318,6 +320,7 @@
             this.Model = (TModel)model;
             this.Url = new UrlHelpers<TModel>(engine, renderContext);
             this.ViewBag = renderContext.Context.ViewBag;
+            this.Localisation.CurrentCulture = CultureService.DetermineCurrentCulture(renderContext.Context);
         }
     }
 }
