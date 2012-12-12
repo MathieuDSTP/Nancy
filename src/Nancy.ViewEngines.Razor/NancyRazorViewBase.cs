@@ -80,8 +80,6 @@
 
         public ILocationlisation Localisation { get; set; }
 
-        public ICultureService CultureService { get; set; }
-
         /// <summary>
         /// Initializes the specified engine.
         /// </summary>
@@ -90,7 +88,7 @@
         /// <param name="model">The model.</param>
         public virtual void Initialize(RazorViewEngine engine, IRenderContext renderContext, object model)
         {
-            Localisation.CurrentCulture = CultureService.DetermineCurrentCulture(renderContext.Context);
+            Localisation.CurrentCulture = renderContext.Context.Culture;
         }
 
         /// <summary>
@@ -320,7 +318,7 @@
             this.Model = (TModel)model;
             this.Url = new UrlHelpers<TModel>(engine, renderContext);
             this.ViewBag = renderContext.Context.ViewBag;
-            this.Localisation.CurrentCulture = CultureService.DetermineCurrentCulture(renderContext.Context);
+            this.Localisation.CurrentCulture = renderContext.Context.Culture;
         }
     }
 }

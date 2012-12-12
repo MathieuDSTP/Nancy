@@ -23,7 +23,6 @@
     {
         private readonly IRazorConfiguration razorConfiguration;
         private readonly ILocationlisation locationlisation;
-        private readonly ICultureService cultureService;
         private readonly IEnumerable<IRazorViewRenderer> viewRenderers;
         private readonly object compileLock = new object();
 
@@ -41,7 +40,7 @@
         /// Initializes a new instance of the <see cref="RazorViewEngine"/> class.
         /// </summary>
         /// <param name="configuration">The <see cref="IRazorConfiguration"/> that should be used by the engine.</param>
-        public RazorViewEngine(IRazorConfiguration configuration, ILocationlisation locationlisation, ICultureService cultureService)
+        public RazorViewEngine(IRazorConfiguration configuration, ILocationlisation locationlisation)
         {
             this.viewRenderers = new List<IRazorViewRenderer>
             {
@@ -51,7 +50,6 @@
 
             this.razorConfiguration = configuration;
             this.locationlisation = locationlisation;
-            this.cultureService = cultureService;
         }
 
         /// <summary>
@@ -350,7 +348,6 @@
             var view = viewFactory.Invoke();
 
             view.Localisation = this.locationlisation;
-            view.CultureService = this.cultureService;
             
             view.Code = string.Empty;
 
